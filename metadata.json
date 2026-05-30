@@ -1,0 +1,6 @@
+{
+  "name": "We Care",
+  "description": "A high-fidelity production-ready Hospital Appointment Booking app showcasing patient, doctor, and admin workflows with Jetpack Compose, MVVM, and Room local persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
