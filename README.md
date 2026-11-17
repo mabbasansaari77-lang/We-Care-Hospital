@@ -1,21 +1,58 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# We Care — Hospital Appointment Booking App
 
-# Run and deploy your AI Studio app
+An Android app for booking hospital appointments, with separate views for **patients**, **doctors** and **admins**.
 
-This contains everything you need to run your app locally.
+Built with Kotlin and Jetpack Compose. Prototype created with Google AI Studio.
 
-View your app in AI Studio: https://ai.studio/apps/d239f4ff-b23e-4bb0-970c-71d5d8f3f0e0
+## Features
 
-## Run Locally
+**Patients**
+- Sign up, log in, forgot password with OTP
+- Search doctors by name, specialty or clinic
+- View doctor details, working days and available time slots
+- Book an appointment and describe symptoms
+- See your appointments, notifications and profile
 
-**Prerequisites:**  [Android Studio](https://developer.android.com/studio)
+**Doctors**
+- See booking requests and mark them complete or decline
+- Write and issue digital prescriptions
 
+**Admins**
+- Dashboard with stats and monthly revenue
+- Add and manage doctors
+- Cancel or reassign appointments to another doctor
 
-1. Open Android Studio
-2. Select **Open** and choose the directory containing this project
-3. Allow Android Studio to fix any incompatibilities as it imports the project.
-4. Create a file named `.env` in the project directory and set `GEMINI_API_KEY` in that file to your Gemini API key (see `.env.example` for an example)
-5. Remove this line from the app's `build.gradle.kts` file: `signingConfig = signingConfigs.getByName("debugConfig")`
-6. Run the app on an emulator or physical device
+## Technology
+
+| Part | Tool |
+| --- | --- |
+| Language | Kotlin |
+| UI | Jetpack Compose (Material 3) |
+| Architecture | MVVM (ViewModel + Repository) |
+| Local database | Room |
+| Network | Retrofit (API URL in `NetworkClient.kt` is a placeholder) |
+| Android | minSdk 24, targetSdk 36 |
+
+## Project structure
+
+| Folder | Purpose |
+| --- | --- |
+| `app/src/main/java/com/example/data` | Room database, entities, DAO, repository |
+| `app/src/main/java/com/example/network` | API service and network client |
+| `app/src/main/java/com/example/ui/screens` | All app screens |
+| `app/src/main/java/com/example/viewmodel` | Appointment ViewModel |
+
+## Run locally
+
+1. Install [Android Studio](https://developer.android.com/studio).
+2. Open this folder in Android Studio and let Gradle sync.
+3. Copy `.env.example` to `.env` and add your own `GEMINI_API_KEY`. Never commit `.env`.
+4. Run the app on an emulator or an Android phone.
+
+## Status
+
+Demo / prototype. The backend API address is a placeholder, so app data is stored locally on the device.
+
+## Author
+
+Muhammad Abbas Ansaari
