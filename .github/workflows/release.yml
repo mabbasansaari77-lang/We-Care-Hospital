@@ -1,0 +1,59 @@
+name: Build APK and publish release
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/release.yml"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (for example v1.1)"
+        required: true
+        default: "v1.0"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || 'v1.0' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "9.3.1"
+
+      - name: Prepare debug keystore and .env
+        run: |
+          base64 -d debug.keystore.base64 > debug.keystore
+          cp .env.example .env
+
+      - name: Build debug APK
+        run: gradle :app:assembleDebug --stacktrace
+
+      - name: Rename APK
+        run: cp app/build/outputs/apk/debug/app-debug.apk "WeCare-Hospital-${TAG}.apk"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: We Care Hospital ${{ env.TAG }}
+          make_latest: true
+          files: WeCare-Hospital-${{ env.TAG }}.apk
+          body: |
+            Demo build of the We Care hospital appointment app.
+
+            **How to install:** download the `.apk` file below on your Android phone (Android 7.0 or newer), open it, and allow "Install from unknown sources" if asked.
+
+            This is a debug build of a prototype. App data is stored only on your device.
