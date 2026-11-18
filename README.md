@@ -4,6 +4,12 @@ An Android app for booking hospital appointments, with separate views for **pati
 
 Built with Kotlin and Jetpack Compose. Prototype created with Google AI Studio.
 
+## Download
+
+[![Download APK](https://img.shields.io/badge/Download-APK%20v1.0-2ea44f?style=for-the-badge&logo=android&logoColor=white)](https://github.com/mabbasansaari77-lang/We-Care-Hospital/releases/download/v1.0/WeCare-Hospital-v1.0.apk)
+
+Download the APK on an Android phone (Android 7.0 or newer), open it, and allow "Install from unknown sources" if asked. All versions are on the [Releases page](https://github.com/mabbasansaari77-lang/We-Care-Hospital/releases).
+
 ## Features
 
 **Patients**
